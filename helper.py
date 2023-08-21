@@ -1,17 +1,10 @@
-#all the functions required
-
 import nltk
-# from nltk import RegexpTokenizer
 from nltk.tokenize import RegexpTokenizer
-# nltk.download('punkt')
-from nltk.tokenize import sent_tokenize
-# nltk.download('stopwords')
 from nltk.corpus import stopwords
 import re
 from collections import Counter
 
 stop_words = set(stopwords.words('english'))
-
 
 def sent_tokenizer(file):
   file_content = open(file, encoding="utf-8").read()
@@ -40,10 +33,6 @@ def Meta_Stop_Words(sent, h):
 
 
 def derived_variables(strict_sent, len_Words,p_stop_words,n_stop_words):
-  #opening the positive words file
-  # f = open('/content/positive-words.txt',encoding ='latin-1')
-  # p_stop_words = f.read()
-
   p_sent = p_stop_words.lower()
 
   p_word_count = 0
@@ -51,10 +40,6 @@ def derived_variables(strict_sent, len_Words,p_stop_words,n_stop_words):
     for word in message.lower().split():
       if word in p_sent:
         p_word_count += 1
-
-  #opening the negative words file
-  # fr = open('/content/negative-words.txt',encoding ='latin-1')
-  # n_stop_words = fr.read()
 
   n_sent = n_stop_words.lower()
 
@@ -104,7 +89,6 @@ def avg_sent_length(nltk_words,nltk_sent):
 def complex_words_all(nltk_sent,nltk_words,avg_sentence_len):
   #complex words
   cw_count = 0
-  # words = o.split()
 
   for myword in nltk_words:
       d = {}.fromkeys('aeiou',0)
@@ -168,8 +152,6 @@ def syllable(total_words):
     sc_list.append(sc)
 
   g = ",".join(str(sc_list))
-  # print(g)
-  # print(len(sc_list))
   avg_syllable = sum(sc_list)/ len(sc_list)
   return avg_syllable
 
